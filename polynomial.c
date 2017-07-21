@@ -46,7 +46,15 @@ Node * getHead(List * equation)
 	return equation->head;
 }
 
-// DISPLAY LIST?
+void displayList(List * newList)
+{	//DISPLAY THE NODES IN A LIST
+	Node * eq3 = newList->head;
+	for ( int i = 0; i < newList->count; i++)
+	{
+		printf("Node[%d]: %dx^%d\n", i, eq3->coeff, eq3->exp);
+		eq3 = eq3->next;
+	}
+}
 
 
 void addNewNode( List * equation, const int coeff, const int exp)
@@ -134,8 +142,6 @@ int insertCoEff(char * string, int num)
 	char number[10];
 	sprintf(number, "%d", num);
 	strcat(string, number);
-	
-	printf("[%s] \n", string);
 	
 	return strlen(number);
 }
@@ -230,16 +236,6 @@ List * poly_add(const List *a, const List *b)
 	}
 	return newList;
 	
-}
-
-void displayList(List * newList)
-{
-	Node * eq3 = newList->head;
-	for ( int i = 0; i < newList->count; i++)
-	{
-		//printf("Node[%d]: %dx^%d\n", i, eq3->coeff, eq3->exp);
-		eq3 = eq3->next;
-	}
 }
 
 List * poly_sub(List *eq1, List *eq2)
