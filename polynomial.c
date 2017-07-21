@@ -1,4 +1,6 @@
+
 #include "polynomial.h"
+
 
 // BASIC NODE FUNTIONs
 
@@ -177,12 +179,12 @@ void poly_iterate(List *a, void (*transform)(Node *))
 
 const int compareExp(Node * p, Node * q)
 {
-	
+	//If no term for p or q.
 	if (p == NULL)
 	{
 		return -1;
 	}	
-	if (q == NULL)
+	else if (q == NULL)
 	{
 		return 1;
 	}	
@@ -248,27 +250,25 @@ List * poly_sub(List *eq1, List *eq2)
 }
 
 
-int poly_equal(const List *a, const List *b)
+bool poly_equal(const List *a, const List *b)
 {
 	Node * eq1 = a->head, *eq2 = b->head;
 	
 	
 	if ((eq1 == NULL) || (eq2 == NULL) )
-		return 1;
+		return false;
 	
 	while ( (eq1 != NULL) || (eq2 != NULL) )
 	{
 		if (eq1->coeff != eq2->coeff)
-			return 1;
+			return false;
 			
 		if (eq1->exp != eq2->exp)
-			return 1;
+			return false;
 	}
 	
-	return 0;
+	return true;
 }
-
-
 
 double poly_evaluate(const List *p, double x)
 {
@@ -289,7 +289,9 @@ double poly_evaluate(const List *p, double x)
 	return total;
 }
 
-
+/*
+List * poly_pow(const List * a, unsigned int e)
+*/
 
 
 
