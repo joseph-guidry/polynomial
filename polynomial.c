@@ -199,7 +199,8 @@ const int compareExp(Node * p, Node * q)
 	{
 		return 1;
 	}	
-		
+	
+	//Determine the higher order terms;
 	int x = p->exp - q->exp;
 
 	if (x == 0)
