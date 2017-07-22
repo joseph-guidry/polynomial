@@ -14,6 +14,8 @@ Node * createNode(void)
 		return NULL;
 	}
 	
+	setNode(newNode);
+	
 	return newNode;
 }
 
@@ -41,6 +43,17 @@ void createList(List * equation )
 {
 	equation->head = NULL;
 	equation->count = 0;
+}
+
+void deleteList(List * temp)
+{
+	Node * n = temp->head, * last;
+	while (n != NULL)
+	{
+		last = n;
+		n=n->next;
+		deleteNode(last);
+	}
 }
 
 Node * getHead(List * equation)

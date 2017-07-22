@@ -22,6 +22,7 @@ void updateNode(Node * newNode, const int coeff, const int exp);
 
 //LIST FUNCTIONS
 void createList(List * equation );
+void deleteList(List * temp);
 Node * getHead(List * equation);
 void addNewNode( List * equation, const int coeff, const int exp);
 Node * getNextNode(Node * node);
