@@ -245,12 +245,15 @@ List * poly_add(const List *a, const List *b)
 List * poly_sub(const List *eq1, const List *eq2)
 {
 	List * newList;
-	//Add eq1 to create newList
-	newList = poly_add(eq1, newList);
+	createList(newList);
 	
+	//Add eq1 to create newList
+	newList = poly_add(eq2, newList);
 	//Negate the signs in newList and add to eq2 == subtraction
 	poly_iterate(newList, negate);
-	newList = poly_add(eq2, newList);
+	
+	newList = poly_add(eq1, newList);
+	
 	
 	return newList;
 }
