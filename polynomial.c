@@ -1,6 +1,4 @@
-
 #include "polynomial.h"
-
 
 // BASIC NODE FUNTIONs
 
@@ -109,7 +107,6 @@ char * poly_to_string(const List *n)
 		return string;
 	}
 	int i = 0;
-	
 	int x = n->count;
 		while(p != NULL)
 		{ 
@@ -150,7 +147,6 @@ char * poly_to_string(const List *n)
 			}
 			p=p->next;
 		}
-	
 	return string;
 }
 
@@ -271,7 +267,6 @@ List * poly_sub(const List *eq1, const List *eq2)
 	return newList;
 }
 
-
 bool poly_equal(const List *a, const List *b)
 {
 	Node * eq1 = a->head, *eq2 = b->head;
@@ -313,7 +308,6 @@ double poly_evaluate(const List *p, double x)
 	return total;
 }
 
-
 List * poly_pow(const List * a, unsigned int e)
 {
 	List * newList = (List *)malloc(sizeof(List));
@@ -333,7 +327,4 @@ List * poly_pow(const List * a, unsigned int e)
 	
 	return newList;
 }
-
-
-
 
