@@ -121,10 +121,12 @@ char * poly_to_string(const List *n)
 				if ( (i == 1) && ( p->coeff > 0) )
 					string[--i] = '\0';
 					
-				//Use the absolute value of a digit to convert into a character.
-				if ( p->coeff != 1)
+				//Check if coefficient = 1 OR -1.
+				if ( (p->coeff != 1) && (p->coeff != -1) )
+				{
+					//Use the absolute value of a digit to convert into a character.
 					i = i + insertCoEff(string, (p->coeff < 0 ? p->coeff * -1: p->coeff));
-				
+				}
 				//Plug is variable, unless exp == 0, than no x. 
 				string[i++] = (p->exp > 0)?'x':'\0';
 				if ( p->exp > 1)
@@ -240,11 +242,15 @@ List * poly_add(const List *a, const List *b)
 	
 }
 
-List * poly_sub(List *eq1, List *eq2)
+List * poly_sub(const List *eq1, const List *eq2)
 {
 	List * newList;
-	poly_iterate(eq2, negate);
-	newList = poly_add(eq1, eq2);
+	//Add eq1 to create newList
+	newList = poly_add(eq1, newList);
+	
+	//Negate the signs in newList and add to eq2 == subtraction
+	poly_iterate(newList, negate);
+	newList = poly_add(eq2, newList);
 	
 	return newList;
 }
@@ -286,12 +292,31 @@ double poly_evaluate(const List *p, double x)
 		term = term->next;
 	}
 	
+	
+	
 	return total;
 }
 
-/*
+
 List * poly_pow(const List * a, unsigned int e)
-*/
+{
+	List * newList = (List *)malloc(sizeof(List));
+	newList = poly_add(newList, a);
+	Node * term = newList->head;
+	while(term != NULL)
+	{
+		int x = term->coeff;
+		for (int i = 0; i < e - 1 ; i++)
+		{
+			term->coeff *= x;
+		}
+		term->exp += e;
+		
+		term = term->next;
+	}
+	
+	return newList;
+}
 
 
 

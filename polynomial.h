@@ -33,7 +33,7 @@ int insertCoEff(char * string, int num);
 
 
 List * poly_add(const List *a, const List *b);
-List * poly_sub(List *eq1, List *eq2);
+List * poly_sub(const List *eq1,const List *eq2);
 const int compareExp(Node * p, Node * q);
 
 bool poly_equal(const List *a, const List *b);
@@ -42,3 +42,5 @@ double poly_evaluate(const List *p, double x);
 void poly_iterate(List *a, void (*transform)(Node *));
 void triple(Node * term);
 void negate(Node * term);  // Used to flip polynomial signs to assist in doing subtraction
+
+List * poly_pow(const List * a, unsigned int e);
